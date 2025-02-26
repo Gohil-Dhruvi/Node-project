@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2023/08/Mac-malware-can-easily-bypass-Apples-Background-Task-Manager.jpg?w=1500&quality=82&strip=all&ssl=1') no-repeat center center/cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            border: 1px solid white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 2.1);
+            width: 50%;
+            height: 60%;
+            color: black;
+            text-align: center;
+            background-color: #fff;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .task-form input, .task-form select, .task-form button {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .task-form button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .task-form button:hover {
+            background: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #02356c;
+            color: white;
+        }
+        .edit-btn, .delete-btn {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+            border-radius: 4px;
+        }
+        .edit-btn {
+            background: #ffc107;
+        }
+        .edit-btn:hover {
+            background: #edb304;
+        }
+        .delete-btn {
+            background: #dc3545;
+        }
+        .delete-btn:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>To Do List </h2>
+        <form action="/addtask" method="post" class="task-form">
+            <input type="text" name="id" placeholder="ID" required>
+            <input type="text" name="title" placeholder="Task Title" required>
+            <select name="status">
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <input type="datetime-local" name="deadline" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th>Actions</th>
+            </tr>
+            <% tasks.forEach(task => { %>
+                <tr>
+                    <td><%= task.id %></td>
+                    <td><%= task.title %></td>
+                    <td><%= task.status %></td>
+                    <td><%= new Date(task.deadline).toLocaleString() %></td>
+                    <td>
+                        <a href="/edittask/<%= task.id %>" class="edit-btn">Edit</a>
+                        <a href="/deletetask/<%= task.id %>" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </table>
+    </div>
+</body>
+</html>

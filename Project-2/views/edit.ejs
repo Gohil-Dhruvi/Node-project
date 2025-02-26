@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <style>
+        body {
+            background: url('https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2023/08/Mac-malware-can-easily-bypass-Apples-Background-Task-Manager.jpg?w=1500&quality=82&strip=all&ssl=1') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        form input, form select, form button {
+            width:95%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        form button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        } 
+        form button:hover {
+            background: #0056b3;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Task</h2>
+
+        <form action="/updatetask/<%= task.id %>" method="post">
+            <input type="hidden" name="id" value="<%= task.id %>">
+            <input type="text" name="title" value="<%= task.title %>" required>
+            <select name="status">
+                <option value="Pending" <%= task.status === "Pending" ? "selected" : "" %>>Pending</option>
+                <option value="Completed" <%= task.status === "Completed" ? "selected" : "" %>>Completed</option>
+            </select>
+            <input type="datetime-local" name="deadline" value="<%= task.deadline %>" required>
+            <button type="submit">Update Task</button>
+        </form>
+
+        <a href="/">Back to List</a>
+    </div>
+</body>
+</html>
