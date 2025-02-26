@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f3a8d8, #a7c8f2);
+    padding: 20px;
+}
+
+header {
+    background: #47314e; 
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 5px solid #FF6347;
+}
+
+header h2 {
+    font-size: 40px;
+    color: #FFD700; 
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    color: #FF6347; 
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95); 
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 30px auto;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.container p {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.contact-info {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.contact-info h3 {
+    font-size: 24px;
+    color: #2b1d2f; 
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.contact-info strong {
+    color: #FF6347; 
+}
+
+.contact-form {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f7f7f7;
+}
+
+.contact-form input:disabled, .contact-form textarea:disabled {
+    background-color: #eaeaea;
+}
+
+@media (max-width: 768px) {
+    header h2 {
+        font-size: 28px;
+    }
+
+    nav a {
+        font-size: 16px;
+        margin: 0 10px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+
+    .contact-info h3 {
+        font-size: 20px;
+    }
+
+    .contact-info p {
+        font-size: 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Contact Page</h2>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda delectus incidunt, culpa modi ipsam dolore impedit amet nam accusantium vel porro at dicta eaque, fugiat veritatis laborum a optio excepturi ducimus ipsum, tempore corporis magnam sunt?</p>
+
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><strong>Phone:</strong> +91 12 34 56 78 90</p>
+            <p><strong>Email:</strong> contact@serverproject.com</p>
+        </div>
+
+        <!-- Disabled Contact Form -->
+        <div class="contact-form">
+            <h3>Contact Form</h3>
+            <form>
+                <input type="text" name="name" placeholder="Your Name" disabled>
+                <input type="email" name="email" placeholder="Your Email" disabled>
+                <textarea name="message" rows="5" placeholder="Your Message" disabled></textarea>
+                <input type="submit" value="Submit" disabled>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
