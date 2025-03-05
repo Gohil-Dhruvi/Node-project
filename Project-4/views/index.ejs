@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookstore Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #fce4ec;
+            color: #2d3436;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            background-color: #e91e63;
+            padding: 30px;
+            margin-bottom: 40px;
+            font-size: 3rem;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #e91e63;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: #e91e63;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        td {
+            background-color: #fce4ec;
+            color: #2d3436;
+        }
+
+        td a {
+            text-decoration: none;
+        }
+
+        table tr:hover {
+            background-color: #f8bbd0;
+        }
+
+        button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #d81b60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-color: #e91e63;
+            outline: none;
+            background-color: #f1f2f6;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-container button {
+            width: 100%;
+        }
+
+        a button {
+            background-color: #f44336;
+            padding: 10px 20px;
+            margin: 10px 8px;
+            border-radius: 6px;
+        }
+
+        a button:hover {
+            background-color: #d32f2f;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .form-container {
+                width: 90%;
+                padding: 25px;
+            }
+
+            table th,
+            table td {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+
+            button {
+                padding: 10px 20px;
+            }
+
+            .btn-container button {
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bookstore Management</h1>
+
+    <div class="form-container">
+        <form action="/add-book" method="post">
+            <table>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" name="title" required /></td>
+                </tr>
+                <tr>
+                    <td>Author:</td>
+                    <td><input type="text" name="author" required /></td>
+                </tr>
+                <tr>
+                    <td>Genre:</td>
+                    <td><input type="text" name="genre" required /></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="number" name="price" required min="0" /></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><textarea name="description" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Publisher:</td>
+                    <td><input type="text" name="publisher" required /></td>
+                </tr>
+                <tr>
+                    <td>Published Year:</td>
+                    <td><input type="number" name="year" required min="1000" max="2099" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="btn-container">
+                        <button type="submit">Add Book</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Price</th>
+                <th style="text-align: left;">Description</th>
+                <th>Publisher</th>
+                <th>Published Year</th>
+                <th>Action</th>
+            </tr>
+            <% books.forEach((book, index)=> { %>
+                <tr>
+                    <td>
+                        <%= index + 1 %>
+                    </td>
+                    <td>
+                        <%= book.title %>
+                    </td>
+                    <td>
+                        <%= book.author %>
+                    </td>
+                    <td>
+                        <%= book.genre %>
+                    </td>
+                    <td>₹<%= book.price.toFixed(2) %>
+                    </td>
+                    <td style="text-align: left;">
+                        <%= book.description %>
+                    </td>
+                    <td>
+                        <%= book.publisher %>
+                    </td>
+                    <td>
+                        <%= book.year %>
+                    </td>
+                    <td>
+                        <a href="/deletebook/<%= book.id %>"><button>Delete</button></a>
+                        <a href="/editbook/<%= book.id %>"><button>Edit</button></a>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+    </div>
+</body>
+
+</html>
