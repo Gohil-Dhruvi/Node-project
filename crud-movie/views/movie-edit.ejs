@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Movie</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+    
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-transform: uppercase;
+            color: #E91E63;
+        }
+    
+        .form-container {
+            background: #1E1E1E;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(233, 30, 99, 0.2);
+            width: 400px;
+        }
+    
+        table {
+            width: 100%;
+        }
+    
+        td {
+            padding: 10px;
+            font-size: 16px;
+        }
+    
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #222;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+    
+        input:focus,
+        textarea:focus {
+            border-color: #E91E63;
+            box-shadow: 0px 0px 8px rgba(233, 30, 99, 0.5);
+        }
+    
+        button {
+            background: linear-gradient(90deg, #E91E63, #FF5722);
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    
+        button:hover {
+            background: linear-gradient(90deg, #FF5722, #E91E63);
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.3);
+        }
+    
+        img {
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 2px solid #E91E63;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h1 align="center">Edit Movie</h1>
+
+    <div class="form-container" align="center">
+        <form action="/update/<%= movie.id %>" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" name="title" value="<%= movie.title %>" required></td>
+                </tr>
+                <tr>
+                    <td>Director:</td>
+                    <td><input type="text" name="director" value="<%= movie.director %>" required></td>
+                </tr>
+                <tr>
+                    <td>Genre:</td>
+                    <td><input type="text" name="genre" value="<%= movie.genre %>" required></td>
+                </tr>
+                <tr>
+                    <td>Release Year:</td>
+                    <td><input type="number" name="releaseYear" value="<%= movie.releaseYear %>" required min="1900" max="2099"></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><textarea name="description" required><%= movie.description %></textarea></td>
+                </tr>
+                <tr>
+                    <td>Rating:</td>
+                    <td><input type="number" name="rating" value="<%= movie.rating %>" required min="0" max="10" step="0.1"></td>
+                </tr>
+                <tr>
+                    <td>Poster:</td>
+                    <td>
+                        <input type="file" name="poster">
+                        <% if (movie.poster) { %>
+                            <br>
+                            <img src="<%= movie.poster %>" width="50">
+                        <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><button type="submit">Update Movie</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
