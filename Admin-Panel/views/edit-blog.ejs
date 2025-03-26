@@ -1,0 +1,43 @@
+<%- include('blog/header') %>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Edit Blog</h2>
+    <form action="/blogs/edit/<%= blog._id %>" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="<%= blog.title %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="6" required><%= blog.content %></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" class="form-control" id="category" name="category" value="<%= blog.category %>" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="tags">Tags (comma separated)</label>
+            <input type="text" class="form-control" id="tags" name="tags" value="<%= blog.tags.join(', ') %>">
+        </div>
+        
+        <% if (blog.blogImage) { %>
+            <div class="form-group">
+                <label>Current Image</label><br>
+                <img src="/uploads/<%= blog.blogImage %>" class="img-fluid mb-3" style="max-width: 200px;" alt="Blog Image">
+            </div>
+        <% } %>
+        
+        <div class="form-group">
+            <label for="blogImage">Upload New Image (optional)</label>
+            <input type="file" class="form-control-file" id="blogImage" name="blogImage">
+        </div>
+        
+        <button type="submit" class="btn btn-success">Update Blog</button>
+        <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<%- include('blog/footer') %>
